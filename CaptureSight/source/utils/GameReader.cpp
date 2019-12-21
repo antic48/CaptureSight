@@ -1,8 +1,19 @@
 #include <vector>
 #include <utils/GameReader.hpp>
+#include <utils/Utils.hpp>
 
 GameReader::GameReader() {
-  dmntchtGetCheatProcessMetadata(&(this->metadata));
+  this->isDebugServiceRunning = checkIfServiceIsRunning("dmnt:cht");
+
+  if (this->isDebugServiceRunning) {
+    dmntchtInitialize();
+    dmntchtForceOpenCheatProcess();
+    dmntchtGetCheatProcessMetadata(&(this->metadata));
+  }
+}
+
+bool GameReader::GetIsServiceRunning() {
+  return this->isDebugServiceRunning;
 }
 
 Result GameReader::ReadHeap(u64 offset, void* buffer, size_t size) {

@@ -20,7 +20,8 @@
     "More detail (X), Go back (B)": "Plus d'informations (X), Retour (B)",
     "Den Id": "ID de l'Antre",
     "Wild and Trade Pokemon": "Pokémon sauvage et échangé",
-    "Trade Pokemon": "Pokemon à l'échange"
+    "Trade Pokemon": "Pokemon à l'échange",
+    "Atmosphere's dmnt:cht is not running!\nPress + to close": "Dmnt de l'atmosphère: cht n'est pas en cours d'exécution!\nAppuyez sur + pour fermer"
   },
   "natures": {
     "0": "Hardi",

@@ -1,0 +1,1 @@
+bool checkIfServiceIsRunning(const char* serviceName);

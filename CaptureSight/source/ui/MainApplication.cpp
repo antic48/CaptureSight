@@ -9,14 +9,7 @@ Settings gsets;
 std::shared_ptr<I18N> i18n;
 
 void MainApplication::OnLoad() {
-  if (R_FAILED(dmntchtInitialize()))
-    this->Close();
-  if (R_FAILED(dmntchtForceOpenCheatProcess()))
-    this->Close();
-
   this->save = std::make_unique<GameReader>();
-  this->pkms = this->save->ReadParty();
-  this->dens = this->save->ReadDens(false);
 
   this->pokemonSummaryLayout = PokemonSummaryLayout::New();
   this->pokemonSummaryLayout->SetOnInput(std::bind(&MainApplication::OnInputPokemonSummaryLayout, this, std::placeholders::_1, std::placeholders::_2,
@@ -33,6 +26,13 @@ void MainApplication::OnLoad() {
   this->SetOnInput(
       std::bind(&MainApplication::OnInput, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4));
 
+  if (!this->save->GetIsServiceRunning()) {
+    this->dmntChtWarningLayout = DmntChtWarningLayout::New();
+    this->dmntChtWarningLayout->SetBackgroundColor(gsets.GetTheme().background.dark);
+    this->LoadLayout(this->dmntChtWarningLayout);
+    return;
+  }
+
   this->LoadLayout(this->mainMenuLayout);
 }
 
@@ -40,11 +40,13 @@ void MainApplication::OnInput(u64 Down, u64 Up, u64 Held, pu::ui::Touch Pos) {
   if (Down & KEY_PLUS) {
     dmntchtExit();
     this->CloseWithFadeOut();
-  } else if (Down & KEY_X) {
-    this->isShowingExtraDetail = !this->isShowingExtraDetail;
-    this->RefreshSummaryLayout();
-  } else if (Down & KEY_B) {
-    this->LoadLayout(this->mainMenuLayout);
+  } else if (this->save->GetIsServiceRunning()) {
+    if (Down & KEY_X) {
+      this->isShowingExtraDetail = !this->isShowingExtraDetail;
+      this->RefreshSummaryLayout();
+    } else if (Down & KEY_B) {
+      this->LoadLayout(this->mainMenuLayout);
+    }
   }
 }
 
