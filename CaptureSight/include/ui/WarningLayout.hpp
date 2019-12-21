@@ -2,10 +2,10 @@
 
 #include <pu/Plutonium>
 
-class DmntChtWarningLayout : public pu::ui::Layout {
+class WarningLayout : public pu::ui::Layout {
  public:
-  DmntChtWarningLayout();
-  PU_SMART_CTOR(DmntChtWarningLayout)
+  WarningLayout();
+  PU_SMART_CTOR(WarningLayout)
 
   void SetWarningText(std::string warning);
 

@@ -16,10 +16,10 @@ void MainApplication::OnLoad() {
   if (!isDebugServiceRunning || !isPokemonGameRunning) {
     std::string warningTranslationKey =
         isDebugServiceRunning ? "Please start a Pokemon game before running CaptureSight" : "Atmosphere's dmnt:cht is not running";
-    this->dmntChtWarningLayout = DmntChtWarningLayout::New();
-    this->dmntChtWarningLayout->SetBackgroundColor(gsets.GetTheme().background.dark);
-    this->dmntChtWarningLayout->SetWarningText(i18n->Translate(warningTranslationKey));
-    this->LoadLayout(this->dmntChtWarningLayout);
+    this->warningLayout = WarningLayout::New();
+    this->warningLayout->SetBackgroundColor(gsets.GetTheme().background.dark);
+    this->warningLayout->SetWarningText(i18n->Translate(warningTranslationKey));
+    this->LoadLayout(this->warningLayout);
     return;
   }
 

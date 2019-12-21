@@ -8,7 +8,7 @@
 #include <ui/PokemonListLayout.hpp>
 #include <ui/DenMenuLayout.hpp>
 #include <ui/PokemonViewMode.hpp>
-#include <ui/DmntChtWarningLayout.hpp>
+#include <ui/WarningLayout.hpp>
 #include <utils/PK8.hpp>
 #include <utils/GameReader.hpp>
 #include <utils/Den.hpp>
@@ -33,7 +33,7 @@ class MainApplication : public pu::ui::Application {
   MainMenuLayout::Ref mainMenuLayout;
   PokemonListLayout::Ref pokemonListLayout;
   DenMenuLayout::Ref denMenuLayout;
-  DmntChtWarningLayout::Ref dmntChtWarningLayout;
+  WarningLayout::Ref warningLayout;
 
   void OnInput(u64 Down, u64 Up, u64 Held, pu::ui::Touch Pos);
   void OnInputPokemonSummaryLayout(u64 Down, u64 Up, u64 Held, pu::ui::Touch Pos);
