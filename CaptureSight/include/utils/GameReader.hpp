@@ -7,9 +7,13 @@
 #include <utils/PK8.hpp>
 #include <utils/Den.hpp>
 
+const u64 SWORD_TITLE_ID = 0x0100ABF008968000;
+const u64 SHIELD_TITLE_ID = 0x01008DB008C2C000;
+
 class GameReader : public RaidDetails {
  public:
   GameReader();
+  bool GetIsPokemonRunning();
   bool GetIsServiceRunning();
   std::vector<std::shared_ptr<PK8>> ReadParty();
   std::vector<std::shared_ptr<PK8>> ReadBoxes();

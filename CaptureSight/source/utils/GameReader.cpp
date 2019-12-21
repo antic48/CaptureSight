@@ -12,6 +12,10 @@ GameReader::GameReader() {
   }
 }
 
+bool GameReader::GetIsPokemonRunning() {
+  return (this->metadata.title_id == SWORD_TITLE_ID) || (this->metadata.title_id == SHIELD_TITLE_ID);
+}
+
 bool GameReader::GetIsServiceRunning() {
   return this->isDebugServiceRunning;
 }

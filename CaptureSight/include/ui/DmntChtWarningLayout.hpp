@@ -7,6 +7,8 @@ class DmntChtWarningLayout : public pu::ui::Layout {
   DmntChtWarningLayout();
   PU_SMART_CTOR(DmntChtWarningLayout)
 
+  void SetWarningText(std::string warning);
+
  private:
   pu::ui::elm::TextBlock::Ref warningTextBlock;
 };
